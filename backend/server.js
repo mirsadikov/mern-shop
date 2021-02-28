@@ -4,11 +4,11 @@ import colors from "colors";
 import { notFound, errorHandler } from "./middeware/errorMiddleware.js";
 import connectDB from "./config/db.js";
 import products from "./data/products.js";
-
+import cors from "cors";
 import productRoutes from "./routes/productRoutes.js";
 
 dotenv.config();
-
+app.use(cors());
 connectDB();
 
 const app = express();
