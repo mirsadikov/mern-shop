@@ -6,12 +6,21 @@ import {
   productDetailsReducer,
 } from "./reducers/productReducer";
 
+import { savedReducer } from "./reducers/savedReducer";
+
 const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
+  saved: savedReducer,
 });
 
-const initialState = {};
+const savedItemsFromStorage = localStorage.getItem("savedItems")
+  ? JSON.parse(localStorage.getItem("savedItems"))
+  : [];
+
+const initialState = {
+  saved: { savedItems: savedItemsFromStorage },
+};
 
 const middleware = [thunk];
 

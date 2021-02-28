@@ -4,15 +4,17 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
+import SavedScreen from "./screens/SavedScreen";
 
 const App = () => {
   return (
     <Router>
       <Header />
-      <main className="py-3">
+      <main>
         <Container>
           <Route path="/" component={HomeScreen} exact />
           <Route path="/product/:id" component={ProductScreen} />
+          <Route path="/saved/:id?" component={SavedScreen} />
         </Container>
       </main>
       <Footer />

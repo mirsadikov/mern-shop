@@ -9,8 +9,9 @@ import Message from "../components/Message";
 // import products from "../data/products.js";
 import { listProductDetails } from "../actions/productActions";
 
-const ProductScreen = ({ match }) => {
+const ProductScreen = ({ history, match }) => {
   // const product = products.find((p) => p._id === match.params.id);
+
   const dispatch = useDispatch();
 
   const productDetails = useSelector((state) => state.productDetails);
@@ -19,12 +20,20 @@ const ProductScreen = ({ match }) => {
     dispatch(listProductDetails(match.params.id));
   }, [dispatch, match]);
 
+  const saveHandler = () => {
+    history.push(`/saved/${match.params.id}`);
+  };
+
   return (
     <>
-      <Link className="btn btn-light my-3" to="/">
+      {/* <Link className="btn btn-light my-3" to={history.goBack()}>
         <i className="fas fa-chevron-left mr-1"></i>
         Orqaga
-      </Link>
+      </Link> */}
+      <Button className="btn btn-light my-3" onClick={() => history.goBack()}>
+        <i className="fas fa-chevron-left mr-1"></i>
+        Orqaga
+      </Button>
       {loading ? (
         <Loader />
       ) : error ? (
@@ -59,13 +68,17 @@ const ProductScreen = ({ match }) => {
                   text={`${product.numReviews} ta izohlar`}
                   value={product.rating}
                 />
-                <Button variant="primary">Primary</Button>
+                <Button variant="primary" onClick={saveHandler}>
+                  Saqlash
+                </Button>
               </ListGroup.Item>
-              <ListGroup.Item>Narxi: ${product.price}</ListGroup.Item>
-              <ListGroup.Item>Tavsif: {product.description}</ListGroup.Item>
               <ListGroup.Item>
-                <Button variant="primary">Primary</Button>
+                Narxi:{" "}
+                <h3 style={{ display: "inline-block", marginLeft: "5px" }}>
+                  ${product.price}
+                </h3>
               </ListGroup.Item>
+              <ListGroup.Item>Tavsif: {product.description}</ListGroup.Item>
             </ListGroup>
           </Col>
         </Row>
