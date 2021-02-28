@@ -2,9 +2,7 @@ import axios from "axios";
 import { SAVED_ADD_ITEM, SAVED_REMOVE_ITEM } from "../constants/savedConstants";
 
 export const save = (id) => async (dispatch, getState) => {
-  const { data } = await axios.get(
-    `https://electrouz.herokuapp.com/api/products/${id}`
-  );
+  const { data } = await axios.get(`/api/products/${id}`);
 
   dispatch({
     type: SAVED_ADD_ITEM,
