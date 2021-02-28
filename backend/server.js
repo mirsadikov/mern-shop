@@ -8,10 +8,10 @@ import cors from "cors";
 import productRoutes from "./routes/productRoutes.js";
 
 dotenv.config();
-app.use(cors());
 connectDB();
 
 const app = express();
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("API is running...");
