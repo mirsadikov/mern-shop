@@ -27,3 +27,7 @@ yarn-error.log*
 
 # other
 frontend/.eslintcache
+
+# vscode
+.vscode
+frontend/.eslintcache
