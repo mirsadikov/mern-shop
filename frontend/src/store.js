@@ -7,19 +7,26 @@ import {
 } from "./reducers/productReducer";
 
 import { savedReducer } from "./reducers/savedReducer";
+import { userLoginReducer, userRegisterReducer } from "./reducers/userReducers";
 
 const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
   saved: savedReducer,
+  userLogin: userLoginReducer,
+  userRegister: userRegisterReducer,
 });
 
 const savedItemsFromStorage = localStorage.getItem("savedItems")
   ? JSON.parse(localStorage.getItem("savedItems"))
   : [];
 
+const usreInfoFromStorage = localStorage.getItem("userInfo")
+  ? JSON.parse(localStorage.getItem("userInfo"))
+  : null;
 const initialState = {
   saved: { savedItems: savedItemsFromStorage },
+  userLogin: { userInfo: usreInfoFromStorage },
 };
 
 const middleware = [thunk];
