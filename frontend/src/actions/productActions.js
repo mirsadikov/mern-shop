@@ -37,7 +37,7 @@ export const listProductDetails = (id) => async (dispatch, getState) => {
       },
     } = getState();
 
-    if (_id != "undefined" && _id != id) {
+    if (_id !== "undefined" && _id !== id) {
       dispatch({ type: PRODUCT_DETAILS_REQUEST });
     }
 
