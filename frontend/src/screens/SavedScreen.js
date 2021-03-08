@@ -6,9 +6,9 @@ import {
   Col,
   ListGroup,
   Image,
-  Form,
+  // Form,
   Button,
-  Card,
+  // Card,
 } from "react-bootstrap";
 import Message from "../components/Message";
 import { save, removeFromSaved } from "../actions/savedActions";

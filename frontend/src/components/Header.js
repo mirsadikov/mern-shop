@@ -30,12 +30,21 @@ const Header = () => {
                 </Nav.Link>
               </LinkContainer>
               {userInfo ? (
-                <NavDropdown title={userInfo.name} id="username">
+                <NavDropdown
+                  title={userInfo.name}
+                  className="px-3 text-center"
+                  id="username"
+                >
                   <LinkContainer to="/profile">
-                    <NavDropdown.Item>Profile</NavDropdown.Item>
+                    <NavDropdown.Item className="text-center">
+                      Profilim
+                    </NavDropdown.Item>
                   </LinkContainer>
-                  <NavDropdown.Item onClick={logoutHandler}>
-                    Log out
+                  <NavDropdown.Item
+                    className="text-center"
+                    onClick={logoutHandler}
+                  >
+                    Chiqish
                   </NavDropdown.Item>
                 </NavDropdown>
               ) : (
