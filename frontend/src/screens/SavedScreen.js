@@ -55,7 +55,8 @@ const SavedScreen = ({ match, history }) => {
           <Message variant="danger">{error}</Message>
         ) : !items ||
           items[0] === "notLoaded" ||
-          (items[0] === "noItems" && loading) ? (
+          (items[0] === "noItems" && loading) ||
+          (items.length === 0 && loading) ? (
           <Loader />
         ) : items[0] === "noItems" && !loading ? (
           <Message>
