@@ -1,6 +1,13 @@
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 
+const savedSchema = mongoose.Schema({
+  productId: {
+    type: String,
+    required: true,
+  },
+});
+
 const userSchema = mongoose.Schema(
   {
     name: {
@@ -16,6 +23,7 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    saved: [savedSchema],
     isAdmin: {
       type: Boolean,
       required: true,
