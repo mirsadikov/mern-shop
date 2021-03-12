@@ -51,16 +51,18 @@ const SavedScreen = ({ match, history }) => {
           Orqaga
         </Button>
         <h1>Tanlanganlar</h1>
-        {loading ? (
-          <Loader />
-        ) : error ? (
+        {error ? (
           <Message variant="danger">{error}</Message>
-        ) : items.length === 0 ? (
+        ) : !items ||
+          items[0] === "notLoaded" ||
+          (items[0] === "noItems" && loading) ? (
+          <Loader />
+        ) : items[0] === "noItems" && !loading ? (
           <Message>
             Sizda hech qanday saqlangan mahsulotlar yo'q.{"   "}
             <Link to="/"> Bosh sahifa</Link>
           </Message>
-        ) : (
+        ) : items.length !== 0 ? (
           <ListGroup variant="flush">
             {items.map((item) => (
               <ListGroup.Item key={item._id}>
@@ -95,7 +97,13 @@ const SavedScreen = ({ match, history }) => {
                 </Row>
               </ListGroup.Item>
             ))}
+            {loading && <Loader />}
           </ListGroup>
+        ) : (
+          <Message>
+            Sizda hech qanday saqlangan mahsulotlar yo'q.{"   "}
+            <Link to="/"> Bosh sahifa</Link>
+          </Message>
         )}
       </Col>
     </Row>

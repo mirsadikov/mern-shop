@@ -32,7 +32,7 @@ const usreInfoFromStorage = localStorage.getItem("userInfo")
   ? JSON.parse(localStorage.getItem("userInfo"))
   : null;
 const initialState = {
-  savedItems: { items: [] },
+  savedItems: { items: ["notLoaded"] },
   userLogin: { userInfo: usreInfoFromStorage },
 };
 

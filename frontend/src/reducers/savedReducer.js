@@ -18,9 +18,10 @@ export const savedItemsReducer = (state = {}, action) => {
     case SAVED_GET_ITEM_FAIL:
       return { ...state, loading: false, error: action.payload };
     case SAVED_REMOVE_ITEM:
+      const remained = state.items.filter((x) => x._id !== action.payload);
       return {
         ...state,
-        items: state.items.filter((x) => x._id !== action.payload),
+        items: remained.length === 0 ? ["noItems"] : remained,
       };
     case SAVED_ADD_REQUEST:
       return { ...state, loading: true };
