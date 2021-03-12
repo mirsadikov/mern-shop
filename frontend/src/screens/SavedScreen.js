@@ -11,23 +11,36 @@ import {
   // Card,
 } from "react-bootstrap";
 import Message from "../components/Message";
-import { save, removeFromSaved } from "../actions/savedActions";
+import {
+  removeFromSaved,
+  getSavedItems,
+  saveToSaved,
+} from "../actions/savedActions";
+import Loader from "../components/Loader";
 
 const SavedScreen = ({ match, history }) => {
   const productId = match.params.id;
 
   const dispatch = useDispatch();
 
-  const saved = useSelector((state) => state.saved);
-  const { savedItems } = saved;
+  const savedItemsList = useSelector((state) => state.savedItems);
+  const { loading, error, items } = savedItemsList;
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
   useEffect(() => {
-    if (productId) {
-      dispatch(save(productId));
+    if (!userInfo) {
+      history.push("/login");
+    } else if (!productId) {
+      dispatch(getSavedItems());
+    } else {
+      dispatch(saveToSaved(productId));
     }
-  }, [dispatch, productId]);
+  }, [dispatch, productId, history, userInfo]);
 
   const removeFromSavedHandler = (id) => {
+    // console.log(id);
     dispatch(removeFromSaved(id));
   };
   return (
@@ -38,23 +51,27 @@ const SavedScreen = ({ match, history }) => {
           Orqaga
         </Button>
         <h1>Tanlanganlar</h1>
-        {savedItems.length === 0 ? (
+        {loading ? (
+          <Loader />
+        ) : error ? (
+          <Message variant="danger">{error}</Message>
+        ) : items.length === 0 ? (
           <Message>
             Sizda hech qanday saqlangan mahsulotlar yo'q.{"   "}
             <Link to="/"> Bosh sahifa</Link>
           </Message>
         ) : (
           <ListGroup variant="flush">
-            {savedItems.map((item) => (
-              <ListGroup.Item key={item.product}>
+            {items.map((item) => (
+              <ListGroup.Item key={item._id}>
                 <Row>
                   <Col md={2} xs={3} className="p-0 d-flex align-items-center">
-                    <Link to={`/product/${item.product}`}>
+                    <Link to={`/product/${item._id}`}>
                       <Image src={item.image} alt={item.name} fluid rounded />
                     </Link>
                   </Col>
                   <Col md={5} xs={5} className="d-flex align-items-center">
-                    <Link to={`/product/${item.product}`}>{item.name}</Link>
+                    <Link to={`/product/${item._id}`}>{item.name}</Link>
                   </Col>
                   <Col
                     md={3}
@@ -69,7 +86,7 @@ const SavedScreen = ({ match, history }) => {
                       variant="light"
                       className="mx-auto"
                       onClick={() => {
-                        removeFromSavedHandler(item.product);
+                        removeFromSavedHandler(item._id);
                       }}
                     >
                       <i className="fas fa-trash mx-auto d-block"></i>

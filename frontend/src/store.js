@@ -6,7 +6,7 @@ import {
   productDetailsReducer,
 } from "./reducers/productReducer";
 
-import { savedReducer } from "./reducers/savedReducer";
+import { savedItemsReducer } from "./reducers/savedReducer";
 import {
   userDetailsReducer,
   userLoginReducer,
@@ -17,22 +17,22 @@ import {
 const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
-  saved: savedReducer,
+  savedItems: savedItemsReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer,
 });
 
-const savedItemsFromStorage = localStorage.getItem("savedItems")
-  ? JSON.parse(localStorage.getItem("savedItems"))
-  : [];
+// const savedItemsFromStorage = localStorage.getItem("savedItems")
+//   ? JSON.parse(localStorage.getItem("savedItems"))
+//   : [];
 
 const usreInfoFromStorage = localStorage.getItem("userInfo")
   ? JSON.parse(localStorage.getItem("userInfo"))
   : null;
 const initialState = {
-  saved: { savedItems: savedItemsFromStorage },
+  savedItems: { items: [] },
   userLogin: { userInfo: usreInfoFromStorage },
 };
 

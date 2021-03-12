@@ -20,7 +20,7 @@ const ProductScreen = ({ history, match }) => {
     dispatch(listProductDetails(match.params.id));
   }, [dispatch, match]);
 
-  const saveHandler = () => {
+  const saveHandler = async () => {
     history.push(`/saved/${match.params.id}`);
   };
 
