@@ -24,10 +24,6 @@ const reducer = combineReducers({
   userUpdateProfile: userUpdateProfileReducer,
 });
 
-// const savedItemsFromStorage = localStorage.getItem("savedItems")
-//   ? JSON.parse(localStorage.getItem("savedItems"))
-//   : [];
-
 const usreInfoFromStorage = localStorage.getItem("userInfo")
   ? JSON.parse(localStorage.getItem("userInfo"))
   : null;
