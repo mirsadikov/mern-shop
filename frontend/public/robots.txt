@@ -1,3 +1,9 @@
+# https://t.me/zeyds
+# https://t.me/mir_sadikov
+
+
+
+
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
