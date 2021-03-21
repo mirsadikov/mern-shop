@@ -36,7 +36,6 @@ const deleteSavedItem = asyncHandler(async (req, res) => {
 const addSavedItem = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id).select("-password");
   const idForAdd = req.body.idForAdd;
-  console.log(idForAdd);
 
   if (user) {
     const existItem = user.saved.find((x) => x === idForAdd);
