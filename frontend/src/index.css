@@ -79,3 +79,7 @@ div.list-group-flush div.list-group-item {
     transform: scaleY(1);
   }
 }
+
+#root > header > nav > div > button {
+  border: none;
+}
