@@ -11,7 +11,6 @@ const users = [
     name: "John Doe",
     email: "john@example.com",
     password: bcrypt.hashSync("123456", 10),
-    saved: ["6046d84baddf7020b0078ab9"],
   },
   {
     name: "Jane Doe",
