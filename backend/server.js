@@ -2,10 +2,10 @@ import express from "express";
 import dotenv from "dotenv";
 import colors from "colors";
 import path from "path";
+import cors from "cors";
+import morgan from "morgan";
 import { notFound, errorHandler } from "./middeware/errorMiddleware.js";
 import connectDB from "./config/db.js";
-import products from "./data/products.js";
-import cors from "cors";
 import productRoutes from "./routes/productRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import savedRoutes from "./routes/savedRoutes.js";
@@ -15,6 +15,10 @@ dotenv.config();
 connectDB();
 
 const app = express();
+
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
 app.use(express.json());
 app.use(cors());
 

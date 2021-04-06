@@ -14,6 +14,11 @@ const reviewsSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      requred: true,
+      ref: "User",
+    },
   },
   {
     timestamps: true,
