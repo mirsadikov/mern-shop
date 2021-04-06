@@ -1,6 +1,7 @@
 main {
   min-height: 80vh;
 }
+
 footer .badge {
   padding: 0 10px;
   line-height: 22px;
@@ -16,37 +17,6 @@ h3 {
 }
 .card .card-img-top {
   object-fit: cover;
-}
-
-@media (max-width: 575.98px) {
-  h3 {
-    padding: 8px 0 0;
-  }
-  .latestProductsRow {
-    margin-right: 0px !important;
-    margin-left: 0px !important;
-    display: grid !important;
-    grid-template-columns: repeat(2, calc(50% - 4px));
-    width: 100% !important;
-    grid-gap: 8px !important;
-    box-sizing: border-box;
-  }
-  .latestProductsRow .cardContainer {
-    padding: 0px !important;
-  }
-  .cardContainer .card-body {
-    padding: 8px;
-  }
-  .card .card-title {
-    height: 3em;
-    max-height: 3em !important;
-    -webkit-box-orient: vertical;
-    display: -webkit-box;
-    overflow: hidden !important;
-    text-overflow: ellipsis;
-    -webkit-line-clamp: 2;
-    margin-bottom: 8px;
-  }
 }
 
 div.list-group-flush div.list-group-item {
@@ -82,4 +52,81 @@ div.list-group-flush div.list-group-item {
 
 #root > header > nav > div > button {
   border: none;
+}
+
+.topRatedCarousel {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  background-color: #593196;
+  border-radius: 10px;
+}
+.topRatedCarousel .carousel-item-next,
+.topRatedCarousel .carousel-item-prev,
+.topRatedCarousel .carousel-item.active {
+  display: flex !important;
+}
+
+.topRatedCarousel .carousel-caption h2 {
+  color: #ffffff;
+}
+
+.topRatedCarousel.carousel img {
+  height: 300px;
+  width: 300px;
+  object-fit: cover;
+  padding: 30px;
+  margin: 20px;
+  margin-bottom: 80px;
+  border-radius: 13%;
+}
+
+.topRatedCarousel.carousel a {
+  margin: 0 auto;
+}
+
+@media (max-width: 575.98px) {
+  h3 {
+    padding: 8px 0 0;
+  }
+
+  #basic-navbar-nav > form {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    text-align: right;
+    margin-bottom: 8px;
+  }
+  .latestProductsRow {
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, calc(50% - 4px));
+    width: 100% !important;
+    grid-gap: 8px !important;
+    box-sizing: border-box;
+  }
+  .latestProductsRow .cardContainer {
+    padding: 0px !important;
+  }
+  .cardContainer .card-body {
+    padding: 8px;
+  }
+  .card .card-title {
+    height: 3em;
+    max-height: 3em !important;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    margin-bottom: 8px;
+  }
+
+  .topRatedCarousel .carousel-caption h2 {
+    font-size: 20px;
+  }
+
+  .topRatedCarousel.carousel img {
+    margin-top: 10px;
+  }
 }

@@ -6,6 +6,7 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 import Paginate from "../components/Paginate";
 import { listProducts } from "../actions/productActions";
+import TopProductsCarousel from "../components/TopProductsCarousel";
 
 const HomeScreen = ({ match }) => {
   const keyword = match.params.keyword;
@@ -21,13 +22,14 @@ const HomeScreen = ({ match }) => {
 
   return (
     <>
-      <h1 className="pt-3">Oxirgi mahsulotlar</h1>
       {loading ? (
         <Loader />
       ) : error ? (
         <Message variant="danger">{error}</Message>
       ) : (
         <>
+          {!keyword && <TopProductsCarousel />}
+          <h1 className="pt-3">Oxirgi mahsulotlar</h1>
           <Row className="latestProductsRow">
             {products.map((product) => (
               <Col
