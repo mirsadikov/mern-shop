@@ -11,6 +11,7 @@ import {
   createProductReview,
 } from "../actions/productActions";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../constants/productConstants";
+import Meta from "../components/Meta";
 
 const ProductScreen = ({ history, match }) => {
   const [rating, setRating] = useState(0);
@@ -56,10 +57,6 @@ const ProductScreen = ({ history, match }) => {
 
   return (
     <>
-      {/* <Link className="btn btn-light my-3" to={history.goBack()}>
-        <i className="fas fa-chevron-left mr-1"></i>
-        Orqaga
-      </Link> */}
       <Button className="btn btn-light my-3" onClick={() => history.goBack()}>
         <i className="fas fa-chevron-left mr-1"></i>
         Orqaga
@@ -70,6 +67,7 @@ const ProductScreen = ({ history, match }) => {
         <Message variant="danger">{error}</Message>
       ) : (
         <>
+          <Meta title={product.name} />
           <Row>
             <Col md={6}>
               {product.images ? (

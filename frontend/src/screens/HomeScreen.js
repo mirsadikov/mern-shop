@@ -1,14 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 import Product from "../components/Product";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import Paginate from "../components/Paginate";
 import { listProducts } from "../actions/productActions";
 import TopProductsCarousel from "../components/TopProductsCarousel";
+import Meta from "../components/Meta";
 
-const HomeScreen = ({ match }) => {
+const HomeScreen = ({ match, history }) => {
   const keyword = match.params.keyword;
   const pageNumber = match.params.pageNumber || 1;
   const dispatch = useDispatch();
@@ -22,14 +23,22 @@ const HomeScreen = ({ match }) => {
 
   return (
     <>
+      <Meta />
+      {!keyword ? (
+        <TopProductsCarousel />
+      ) : (
+        <Button className="btn btn-light my-3" onClick={() => history.goBack()}>
+          <i className="fas fa-chevron-left mr-1"></i>
+          Orqaga
+        </Button>
+      )}
+      <h1 className="pt-3">Oxirgi mahsulotlar</h1>
       {loading ? (
         <Loader />
       ) : error ? (
         <Message variant="danger">{error}</Message>
       ) : (
         <>
-          {!keyword && <TopProductsCarousel />}
-          <h1 className="pt-3">Oxirgi mahsulotlar</h1>
           <Row className="latestProductsRow">
             {products.map((product) => (
               <Col
