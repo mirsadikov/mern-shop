@@ -67,7 +67,7 @@ const ProfileScreen = ({ history }) => {
         </Form.Group>
 
         <Form.Group controlId="email">
-          <Form.Label>Email Adres</Form.Label>
+          <Form.Label>Email Adress</Form.Label>
           <Form.Control
             type="email"
             placeholder="Emailni kiriting"

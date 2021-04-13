@@ -148,7 +148,7 @@ const ProductEditScreen = ({ match, history }) => {
               <Form.Label>Narx</Form.Label>
               <Form.Control
                 type="number"
-                placeholder="Emailni kiriting"
+                placeholder="Narx kiriting"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
               ></Form.Control>
