@@ -32,6 +32,7 @@ const ProductScreen = ({ history, match }) => {
   } = productReviewCreate;
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (succesProductReview) {
       alert("Izoh qabul qilindi!");
       setRating(0);
